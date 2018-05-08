@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import './index.css';
 class Tile extends React.Component {
   render() {
     return (
@@ -27,5 +27,5 @@ class Container extends React.Component {
 
 ReactDOM.render(
   <Container />,
-  document.getElementById('root')
+  document.getElementById('container')
 );
