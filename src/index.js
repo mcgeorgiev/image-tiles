@@ -4,26 +4,14 @@ import './index.css';
 import classNames from 'classnames';
 
 class Tile extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     expanded: false,
-  //   };
-  //   // this.handleClick = this.handleClick.bind(this);
-  // }
-  // handleClick() {
-  //   this.setState({expanded : !this.state.expanded});
-  //   console.log(this.state.expanded);
-  // }
-
   render(props) {
     let classes = classNames({
-      'tile' : true,
+      'tile': true,
       'expanded': this.props.expanded
     });
     return (
       <div className={classes} onClick={() => this.props.onClick()} >
-        <img src="http://via.placeholder.com/300x300" alt="placeholder image" />
+        <img src="http://via.placeholder.com/300x300" alt="placeholder" />
       </div>
     );
   }
@@ -47,24 +35,22 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileExpanded: 6
+      tileExpanded: false
     }
     this.toggleExpanded = this.toggleExpanded.bind(this);
   }
 
   toggleExpanded(i) {
-    if (this.state.tileExpanded === i) {
-      this.setState({tileExpanded: false});
-    } else {
-      this.setState({tileExpanded: i});
-    }
+      this.setState({tileExpanded: (this.state.tileExpanded === i) ? false : i});
   }
 
   render() {
     let tiles = [];
     for (let i = 0; i < 9; i++) {
       tiles.push(
-        <Tile key={i} expanded = {this.state.tileExpanded === i} onClick={() => { this.toggleExpanded(i)}} />
+        <Tile key={i}
+          expanded={this.state.tileExpanded === i}
+          onClick={() => { this.toggleExpanded(i)}} />
       );
     }
 
