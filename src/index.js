@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import classNames from 'classnames';
-
+let data = require('./data');
 class Tile extends React.Component {
   render(props) {
     let classes = classNames({
@@ -11,7 +11,7 @@ class Tile extends React.Component {
     });
     return (
       <div className={classes} onClick={() => this.props.onClick()} >
-        <img src="http://via.placeholder.com/300x300" alt="placeholder" />
+        <img src={window.location.origin + "/images/" + this.props.data.src} alt="placeholder" />
       </div>
     );
   }
@@ -23,10 +23,16 @@ class ExpandedTile extends React.Component {
       'expanded-tile': true,
       'open': (this.props.expanded !== false)
     });
+    let imageURL = "#";
+    if(this.props.data !== undefined) {
+      imageURL = window.location.origin + "/images/" + this.props.data.src;
+    }
+
     return (
       <div className={classes}> 
         <p>This is the expanded Tile {this.props.expanded}</p>
         <button onClick={() => this.props.onClick()}>X</button>
+        <img src={imageURL} alt="placeholder" />
       </div>
     );
   }
@@ -36,7 +42,8 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileExpanded: false
+      tileExpanded: false,
+      data: data.data.data
     }
     this.openImage = this.openImage.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
@@ -56,13 +63,18 @@ class Container extends React.Component {
       tiles.push(
         <Tile key={i}
           expanded={this.state.tileExpanded === i}
-          onClick={() => { this.openImage(i)}} />
+          onClick={() => { this.openImage(i)}}
+          data={this.state.data[i]}
+        />
       );
     }
 
     return (
       <div>
-        <ExpandedTile expanded={this.state.tileExpanded} onClick={() => {this.closeWindow()}}/>
+        <ExpandedTile
+           expanded={this.state.tileExpanded} 
+           onClick={() => {this.closeWindow()}}
+           data={this.state.data[this.state.tileExpanded]}/>
         <div className="tiles">{tiles}</div>
       </div>
     );
