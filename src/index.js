@@ -24,8 +24,9 @@ class ExpandedTile extends React.Component {
       'open': (this.props.expanded !== false)
     });
     return (
-      <div className={classes}>
+      <div className={classes}> 
         <p>This is the expanded Tile {this.props.expanded}</p>
+        <button onClick={() => this.props.onClick()}>X</button>
       </div>
     );
   }
@@ -37,11 +38,16 @@ class Container extends React.Component {
     this.state = {
       tileExpanded: false
     }
-    this.toggleExpanded = this.toggleExpanded.bind(this);
+    this.openImage = this.openImage.bind(this);
+    this.closeWindow = this.closeWindow.bind(this);
   }
 
-  toggleExpanded(i) {
+  openImage(i) {
       this.setState({tileExpanded: (this.state.tileExpanded === i) ? false : i});
+  }
+
+  closeWindow() {
+    this.setState({tileExpanded: false});
   }
 
   render() {
@@ -50,13 +56,13 @@ class Container extends React.Component {
       tiles.push(
         <Tile key={i}
           expanded={this.state.tileExpanded === i}
-          onClick={() => { this.toggleExpanded(i)}} />
+          onClick={() => { this.openImage(i)}} />
       );
     }
 
     return (
       <div>
-        <ExpandedTile expanded={this.state.tileExpanded}/>
+        <ExpandedTile expanded={this.state.tileExpanded} onClick={() => {this.closeWindow()}}/>
         <div className="tiles">{tiles}</div>
       </div>
     );

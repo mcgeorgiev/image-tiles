@@ -23,6 +23,13 @@
 }
 
 .expanded-tile.open {
-  display: inline;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  background-color: red;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
