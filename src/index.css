@@ -18,5 +18,11 @@
   opacity: 0.5;
 }
 
+.expanded-tile {
+  display: none;
+}
 
+.expanded-tile.open {
+  display: inline;
+}
 
