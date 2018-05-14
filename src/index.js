@@ -23,16 +23,19 @@ class ExpandedTile extends React.Component {
       'expanded-tile': true,
       'open': (this.props.expanded !== false)
     });
-    let imageURL = "#";
+    let imageURL = "#", desc = "", title = "";
     if(this.props.data !== undefined) {
       imageURL = window.location.origin + "/images/" + this.props.data.src;
+      desc = this.props.data.desc;
+      title = this.props.data.title;
     }
 
     return (
       <div className={classes}> 
-        <p>This is the expanded Tile {this.props.expanded}</p>
         <button onClick={() => this.props.onClick()}>X</button>
         <img src={imageURL} alt="placeholder" />
+        <h2>{title}</h2>
+        <p>{desc}</p>
       </div>
     );
   }

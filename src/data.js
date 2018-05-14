@@ -3,47 +3,47 @@ const data = {
     {
       src: "img_0.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Giraffe"
     },
     {
       src: "img_1.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Weasel"
     },
     {
       src: "img_2.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Wildebeest"
     },
     {
       src: "img_3.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Kangaroo"
     },
     { 
       src: "img_4.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Lion"
     },
     {
       src: "img_5.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Iguana"
     },
     {
       src: "img_6.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Gazelle"
     },
     {
       src: "img_7.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Eagle"
     },
     {
       src: "img_8.jpg",
       desc: "This is some dummy data",
-      title: "An Animal"
+      title: "Rhino"
     }
   ]
 }
